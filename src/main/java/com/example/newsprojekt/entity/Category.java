@@ -1,7 +1,9 @@
 package com.example.newsprojekt.entity;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import jakarta.persistence.*;
 
+import java.time.LocalDateTime;
 import java.util.Set;
 
 @Entity
@@ -17,7 +19,10 @@ public class Category {
     private String description;
 
     @ManyToMany(mappedBy = "categories")  // many articles can be associated with many categories
+    @JsonIgnore // Use @JsonIgnore to break the loop
     private Set<Article> articles;
+
+    private LocalDateTime createdDate;
 
     public Category() {
     }
@@ -26,6 +31,7 @@ public class Category {
         this.name = name;
         this.description = description;
         this.articles = articles;
+        this.createdDate = LocalDateTime.now();
     }
 
     public Long getId() {
@@ -58,5 +64,13 @@ public class Category {
 
     public void setArticles(Set<Article> articles) {
         this.articles = articles;
+    }
+
+    public LocalDateTime getCreatedDate() {
+        return createdDate;
+    }
+
+    public void setCreatedDate(LocalDateTime createdDate) {
+        this.createdDate = createdDate;
     }
 }
