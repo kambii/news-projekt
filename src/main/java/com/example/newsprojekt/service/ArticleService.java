@@ -37,6 +37,8 @@ public class ArticleService {
         Article currentArticle = articleRepository.findById(id)
                 .orElseThrow(() -> new RuntimeException("article not found with id: " + id));
 
+        article.setPublicationDate(LocalDateTime.now());
+
         currentArticle.setTitle(article.getTitle());
         currentArticle.setContent(article.getContent());
         currentArticle.setPublicationDate(article.getPublicationDate());
