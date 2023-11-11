@@ -18,7 +18,7 @@ public class Article {
     private String title;
     @Lob  // LOB fields can store large amounts of data, such as text, binary data
     private String content;  // the body of the article
-    private Date publicationDate;
+    private LocalDateTime publicationDate;
 
     @ManyToMany  // many articles can be associated with many categories
     private Set<Category> categories;
@@ -38,11 +38,11 @@ public class Article {
     public Article() {
     }
 
-    public Article(String title, String content, Date publicationDate, Set<Category> categories,
+    public Article(String title, String content/* Date publicationDate */, Set<Category> categories,
                    Media media, List<Comment> comments, Set<Tag> tags) {
         this.title = title;
         this.content = content;
-        this.publicationDate = publicationDate;
+        this.publicationDate = LocalDateTime.now();
         this.categories = categories;
         this.media = media;
         this.comments = comments;
@@ -73,11 +73,11 @@ public class Article {
         this.content = content;
     }
 
-    public Date getPublicationDate() {
+    public LocalDateTime getPublicationDate() {
         return publicationDate;
     }
 
-    public void setPublicationDate(Date publicationDate) {
+    public void setPublicationDate(LocalDateTime publicationDate) {
         this.publicationDate = publicationDate;
     }
 

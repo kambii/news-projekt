@@ -50,6 +50,14 @@
             <artifactId>spring-security-test</artifactId>
             <scope>test</scope>
         </dependency> -->
+
+        <!-- Maven dependency for Jackson Java 8 Datatypes -->
+        <dependency>
+            <groupId>com.fasterxml.jackson.datatype</groupId>
+            <artifactId>jackson-datatype-jsr310</artifactId>
+            <version>2.14.0</version> <!-- Use the latest version available -->
+        </dependency>
+
     </dependencies>
 
     <build>
